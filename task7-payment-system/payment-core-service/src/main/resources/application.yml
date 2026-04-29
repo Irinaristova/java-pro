@@ -1,0 +1,17 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+
+product:
+  service:
+    url: http://localhost:8081/api
+
+logging:
+  level:
+    com.task7.payment: DEBUG
+    org.springframework.web.client: DEBUG
+
+spring:
+  application:
+    name: payment-core-service
