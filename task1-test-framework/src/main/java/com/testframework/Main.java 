@@ -1,0 +1,25 @@
+package com.testframework;
+
+import com.testframework.core.TestRunner;
+import com.testframework.core.TestResult;
+import com.testframework.core.Test;
+import com.testframework.example.ExampleTest;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        Map<TestResult, List<Test>> results = TestRunner.runTests(ExampleTest.class);
+
+        System.out.println("\n=== RESULTS ===");
+        for (Map.Entry<TestResult, List<Test>> entry : results.entrySet()) {
+            System.out.println("\n" + entry.getKey() + ": " + entry.getValue().size());
+            for (Test test : entry.getValue()) {
+                System.out.println("  - " + test.getName());
+                if (test.getException() != null) {
+                    System.out.println("    Exception: " + test.getException().getMessage());
+                }
+            }
+        }
+    }
+}
